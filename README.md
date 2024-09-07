@@ -2,7 +2,7 @@
 
   Obrigado por visitar meu projeto! Este é o código fonte, e você poderá instalar e rodar o mesmo localmente.
   Esse projeto foi feito com Next.js, Typescript e Tailwind.
-  Caso queira visitar em um ambiente publicado pode acessar este link: --------------
+  Caso queira visitar em um ambiente publicado pode acessar este link: https://px-data-challenge-pv3m.vercel.app/ 
 
   ## Getting Started
    >Instalando as Dependencias
