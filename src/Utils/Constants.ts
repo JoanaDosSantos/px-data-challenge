@@ -15,5 +15,11 @@ export const Constants = {
             primary25: '#eeeeee',
             primary: '#e5cdec',
         },
-    })
+    }),
+    Routes:{
+        root: '/',
+        newCard: '/CreateCard',
+        errorPage: '/ErrorPage',
+        noCardsContent: '/NoCardsContent',
+    }
 }

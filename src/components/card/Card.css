@@ -4,8 +4,7 @@
     .card {
         @apply flex flex-col flex-1 flex-wrap p-4 pb-5 bg-[var(--light-gray)] min-w-[412px] max-w-md rounded-2xl h-fit;
     }
-
-    /* #region list-view*/
+    
     .card-list-view {
         @apply relative w-[calc(100%-2rem)] flex-row min-w-[unset] max-w-[unset] flex-[unset] gap-1;
     }
@@ -60,6 +59,14 @@
         @apply cursor-pointer;
     }
 
+    .card-options-menu {
+        @apply list-none m-0 bg-[var(--purple)] mt-3 p-2 px-4 rounded-md w-max absolute right-0 z-[1000];
+    }
+
+    .card-options-menu>li{
+        @apply cursor-pointer text-[var(--white)] flex items-center gap-2;
+    }
+
     .favorite {
         @apply absolute right-2 top-2 cursor-pointer block p-1 bg-[var(--purple)] rounded-full w-5 h-5;
     }
@@ -89,11 +96,6 @@
         transform: rotate(180deg);
     }
 
-    /* 
-    .content-container {
-        @apply mt-6;
-    } */
-
     .contents {
         @apply flex flex-col bg-[var(--white)] p-4 mt-6 rounded-xl gap-4;
     }
@@ -112,12 +114,10 @@
         }
 
         .card-list-view>.card-data-container>.content-resume {
-            position: absolute;
-            top: 5.25rem;
-            left: 8.5rem;
+            @apply absolute top-[5.25rem] left-[8.5rem];
         }
 
-        .hasTags{
+        .hasTags {
             top: 8rem !important;
         }
     }

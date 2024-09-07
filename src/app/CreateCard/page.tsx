@@ -3,10 +3,15 @@
 import { useCard } from '@/hooks/Card';
 import { ICreateCard } from '@/interfaces/ICard';
 import { useEffect, useRef, useState } from 'react';
-import './CreateCard.css'
+import { useRouter } from "next/navigation";
 import { ChevronDownIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
+import './CreateCard.css'
+import { Constants } from '@/Utils/Constants';
+
 export default function CreateCardPage() {
+    const router = useRouter()
+
     const { saveNewCard } = useCard()
 
     const [isGeneralDataExpanded, setIsGeneralDataExpanded] = useState(true)
@@ -19,23 +24,21 @@ export default function CreateCardPage() {
     const cardDescriptionInput = useRef<HTMLInputElement>(null)
 
     function saveCard() {
-        console.log({ canSave });
         if (!canSave) return;
 
         const _newCard: ICreateCard = {
             title: cardTitleInput.current!.value,
             description: cardDescriptionInput.current!.value,
-            content: Object.values(contentData).map(title => ({ title, isNew: true })) ?? []
+            content: Object.values(contentData).filter(data => !!data).map(title => ({ title, isNew: true })) ?? []
         }
 
-        console.log({ _newCard });
-
-
         saveNewCard(_newCard)
+        router.push(Constants.Routes.root)
     }
 
     function handleContentTitleChange(index: number, newValue: string): void {
         const newContentData = { ...contentData, [index]: newValue }
+
         setContentData(newContentData)
     }
 
@@ -46,7 +49,7 @@ export default function CreateCardPage() {
     }
 
     function addContentTitleRow() {
-        const lastIndex = Number(Object.keys(contentData).sort((a, b) => a < b ? 1 : -1)[0])
+        const lastIndex = Number(Object.keys(contentData).sort((a, b) => a < b ? 1 : -1)[0]) ?? 0
 
         setContentData({
             ...contentData,
@@ -110,13 +113,18 @@ export default function CreateCardPage() {
                 {
                     isContentExpanded
                         ?
-                        Object.values(contentData).map((data, index) => (
+                        contentData && Object.keys(contentData).map((data, index) => (
                             <div className='row' key={index}>
                                 <div className='input-div'>
                                     <span className='label'>Titulo</span>
-                                    <input type="text" placeholder='Insira um Titulo' onChange={(ev) => handleContentTitleChange(index, ev.target.value)} />
+                                    <input
+                                        type="text"
+                                        placeholder='Insira um Titulo'
+                                        onChange={(ev) => handleContentTitleChange(Number(data), ev.target.value)}
+                                        value={contentData[Number(data)]}
+                                    />
                                 </div>
-                                <div onClick={() => handleContentTitleRemove(index)}>
+                                <div className='remove-content-div' onClick={() => handleContentTitleRemove(Number(data))}>
                                     <XMarkIcon className='remove-content' />
                                 </div>
                             </div>

@@ -38,8 +38,6 @@
         @apply border-none w-9 h-9 cursor-pointer bg-transparent;
     }
 
-
-    /* Estilização do React select */
     .custom-select {
         @apply border border-gray-300 shadow-md rounded-md;
     }

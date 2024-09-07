@@ -2,18 +2,23 @@ import Image from "next/image";
 import logo from "@/assets/logo.svg";
 import display from "@/assets/display.svg";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
+import { Constants } from '@/Utils/Constants';
 
 import './GeneralDataSection.css'
 
 
 export function GeneralDataSection() {
+    const router = useRouter()
 
     return (
         <div className="header-div">
             <Image
                 src={logo}
                 alt="Luria by PX"
-                className="logo-img"></Image>
+                className="logo-img"
+                onClick={() => router.push(Constants.Routes.root)}
+                />
             <div className="options-div">
                 <button className="wksp-button">
                     <Image

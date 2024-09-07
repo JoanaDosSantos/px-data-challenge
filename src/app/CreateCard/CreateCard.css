@@ -74,6 +74,7 @@
 .row {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .input-div {
@@ -103,13 +104,30 @@
     width: calc(100% - 1.5rem - 4px);
 }
 
-.create-button-section{
+.input-div>input:focus-visible {
+    outline-color: var(--purple);
+}
+
+.remove-content-div {
+    width: 3rem;
+    position: absolute;
+    right: .5rem;
+    cursor: pointer;
+}
+
+.remove-content-div>svg {
+    stroke: var(--purple);
+}
+
+.remove-content {}
+
+.create-button-section {
     position: relative;
     display: flex;
     justify-content: space-between;
 }
 
-.create-button-section>button{
+.create-button-section>button {
     cursor: pointer;
     width: 10rem;
     height: 3rem;
@@ -120,17 +138,19 @@
     transition: 200ms;
 }
 
-.create-button-section>button:hover{
+.create-button-section>button:hover {
     filter: brightness(.85);
 }
 
-.create-button-section>button:disabled{
+.create-button-section>button:disabled {
     cursor: default;
     background-color: var(--dark-gray);
 }
-.create-button-section>button:hover{
+
+.create-button-section>button:hover {
     filter: brightness(1);
 }
+
 @keyframes expandInput {
     0% {
         opacity: 0;

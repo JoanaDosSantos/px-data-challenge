@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { ICard } from "@/interfaces/ICard"
-import { ChevronDownIcon, StarIcon as StarIconOutline } from "@heroicons/react/24/outline"
+import { ChevronDownIcon, StarIcon as StarIconOutline, TrashIcon } from "@heroicons/react/24/outline"
 import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid"
 import dotsIcon from "@/assets/threedots.svg"
 import fileIcon from "@/assets/file.svg"
@@ -18,9 +18,10 @@ interface IProps {
     isFavorite: boolean
 }
 export function Card({ cardData, isFavorite }: IProps) {
-    const { favoriteCard, unFavoriteCard, isGridView } = useCard()
+    const { favoriteCard, unFavoriteCard, isGridView, deleteCard } = useCard()
 
     const [isDataExpanded, setIsDataExpanded] = useState(false)
+    const [isCardOptionsExpanded, setIsCardOptionsExpanded] = useState(false)
 
     const showTags: boolean = isDataExpanded && !!cardData.tags && cardData.tags.length > 0
 
@@ -46,7 +47,18 @@ export function Card({ cardData, isFavorite }: IProps) {
 
                     <div className="title-container">
                         <h3>{cardData.title}</h3>
-                        <span><Image src={dotsIcon} alt="Options" /></span>
+                        <span>
+                            <Image src={dotsIcon} alt="Options" onClick={() => setIsCardOptionsExpanded(!isCardOptionsExpanded)} />
+                            {
+                                isCardOptionsExpanded
+                                    ? <>
+                                        <ul className="card-options-menu" onMouseLeave={() => setIsCardOptionsExpanded(false)}>
+                                            <li onClick={() => deleteCard(cardData.id)}><TrashIcon height={'1.5rem'} /> Deletar Card</li>
+                                        </ul>
+                                    </>
+                                    : null
+                            }
+                        </span>
                     </div>
                     <span>{cardData.description}</span>
                 </div>
@@ -65,7 +77,7 @@ export function Card({ cardData, isFavorite }: IProps) {
                         <div className="contents">
                             {
                                 cardData.content.map((c, index) =>
-                                    <CardContent contentData={c} isLastItem={!((index + 1) != cardData.content.length)} key={index}/>
+                                    <CardContent contentData={c} isLastItem={!((index + 1) != cardData.content.length)} key={index} />
                                 )
                             }
                         </div>

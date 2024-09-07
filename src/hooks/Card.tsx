@@ -20,7 +20,11 @@ interface ICardContextData {
     setIsGridView: Dispatch<SetStateAction<boolean>>
     filterCards: (searchText: string) => void
     loadMockedData: () => void
+    filterFavorites: () => void
     saveNewCard: (card: ICreateCard) => void
+    deleteCard: (cardId: number) => void
+    filterByTag: (tag: string) => void
+    getAllTags: () => Array<string>
 }
 
 const CardContextData = createContext<ICardContextData>({} as ICardContextData);
@@ -35,32 +39,49 @@ export function CardContextProvider({ children }: CardProps) {
         setCards(new CardService().getCards())
     }, [])
 
+    function filterByTag(tag: string) {
+        setCards(new CardService().getCards().filter(card => card.tags?.includes(tag)))
+    }
+
+    function deleteCard(cardId: number) {
+        const newCardsArray = new CardService().getCards().filter(card => card.id != cardId)
+
+        new CardService().setCards(newCardsArray)
+
+        setCards(prev => prev.filter(card => card.id != cardId))
+    }
+
     function filterCards(searchText: string) {
         if (searchText == '') {
-            setCards(_fake_cardData)
+            setCards(new CardService().getCards())
             return
         }
 
         setCards(
-            _fake_cardData.filter(card => card.title.includes(searchText)
-                || card.content.filter(content => splitWords(content.title).includes(searchText)).length > 0)
+            new CardService().getCards().filter(card => card.title.toLowerCase().includes(searchText.toLowerCase())
+                || card.content.filter(content => splitWords(content.title).map(each => each.toLowerCase()).includes(searchText.toLowerCase())).length > 0)
         )
+    }
+
+    function filterFavorites() {
+        setCards(cards.filter(c => favorites.includes(c.id)))
     }
 
     function saveNewCard(card: ICreateCard) {
         const service = new CardService()
         const currentCards = service.getCards()
 
-        const greaterCardId = currentCards.sort((a,b) => a.id < b.id ? 1 : -1)[0].id
-        const greaterContentId = currentCards.sort((a,b) => a.id < b.id ? 1 : -1)[0].content.sort((a,b) => a.id < b.id ? 1 : -1)[0].id
+        const greaterCardId = currentCards.sort((a, b) => a.id < b.id ? 1 : -1)[0]?.id ?? 1
+        const greaterContentId = currentCards.sort((a, b) => a.id < b.id ? 1 : -1)[0]?.content.sort((a, b) => a.id < b.id ? 1 : -1)[0]?.id ?? 1
 
         const _builtedCard: ICard = {
             ...card,
-            id: greaterCardId+1,
+            id: greaterCardId + 1,
             content: card.content.map((c, index) => ({ ...c, id: greaterContentId + (index + 1) }))
         }
 
         service.setCards([...currentCards, _builtedCard])
+        filterCards('')
     }
 
     function loadMockedData() {
@@ -91,6 +112,15 @@ export function CardContextProvider({ children }: CardProps) {
         setFavoritesOnCache(_newFav)
     }
 
+    function getAllTags() {
+        const tags: Array<string> = []
+        cards.map(card => {
+            if (card.tags && card.tags.length > 0) tags.push(...card.tags)
+        })
+
+        return tags
+    }
+
     return (
         <CardContextData.Provider value={{
             cards,
@@ -101,7 +131,11 @@ export function CardContextProvider({ children }: CardProps) {
             setIsGridView,
             filterCards,
             loadMockedData,
-            saveNewCard
+            filterFavorites,
+            saveNewCard,
+            deleteCard,
+            filterByTag,
+            getAllTags
         }}>
             {children}
         </CardContextData.Provider>

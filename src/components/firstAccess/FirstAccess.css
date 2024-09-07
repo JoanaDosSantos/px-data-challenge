@@ -1,54 +1,40 @@
 .modal-content {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
 }
 
 .modal-buttons-section {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin: 1.5rem 0 .5rem 0;
+    @apply flex justify-end gap-4 m-[1.5rem_0_0.5rem_0];
 }
 
 .modal-content-info {
-    display: flex;
-    flex-direction: column;
-    max-width: 60vw;
+    @apply flex flex-col max-w-[60vw];
 }
 
 .modal-content-info>.Title {
-    color: var(--purple);
-    font-size: 2rem;
-    margin: 1.5rem 0 1rem 0;
+    @apply text-[var(--purple)] text-[2rem] m-[1.5rem_0_1rem_0];
 }
 
 .modal-content-info>span:last-child {
-    margin-top: 1rem;
-    font-size: .75rem;
+    @apply mt-4 text-[.75rem];
 }
 
 .modal-content-info>span:last-child>strong:first-child {
-    color: var(--purple);
+    @apply text-[var(--purple)];
 }
 
 .modal-buttons-section>button {
-    cursor: pointer;
-    border: none;
-    height: 2.5rem;
-    width: 7rem;
-    border-radius: 4px;
-    transition: 200ms;
+    @apply cursor-pointer border-none h-10 w-28 rounded transition duration-200;
 }
 
 .modal-buttons-section>button:hover {
-    filter: brightness(.9);
+    @apply filter brightness-90;
 }
 
 .modal-buttons-section>button:first-child {
-    background-color: var(--purple);
-    color: var(--white);
+    @apply bg-[var(--purple)] text-[var(--white)];
 }
 
 .modal-buttons-section>button:last-child {
-    background-color: var(--light-gray);
+    @apply bg-[var(--light-gray)];
+
 }
