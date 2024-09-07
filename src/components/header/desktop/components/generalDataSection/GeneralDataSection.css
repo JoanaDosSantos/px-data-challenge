@@ -1,0 +1,43 @@
+@tailwind components;
+
+@layer components {
+    .header-div {
+        @apply flexrow justify-between my-2 h-12 items-center;
+    }
+
+    .logo-img {
+        @apply w-[6.5rem] h-12;
+    }
+
+    .options-div {
+        @apply w-[27.75rem] flex justify-between;
+    }
+
+    .wksp-button {
+        @apply w-[182px] h-9 py-1 rounded-2xl items-center border-[1.5px] flex gap-2 text-sm justify-center font-semibold cursor-pointer;
+    }    
+    
+    .wksp-icon {
+        @apply w-4 h-5;
+    }
+
+    .lenguages {
+        @apply flexrow justify-center;
+    }
+
+    .lenguage-pt {
+        @apply text-black flex text-sm py-1 px-2 font-bold border-none no-underline items-center cursor-pointer bg-transparent;
+    }
+
+    .lenguage-en {
+        @apply text-gray-500 flex text-sm py-1 px-2 border-none no-underline items-center cursor-pointer bg-transparent;
+    }
+
+    .user-button {
+        @apply flexrow text-black w-[9.25rem] h-9 py-1 px-3 rounded-2xl items-center border-black border-[1px] gap-1 text-sm justify-evenly font-semibold cursor-pointer;
+    }
+
+    .user-icon {
+        @apply w-4 h-5;
+    }
+}

@@ -1,0 +1,12 @@
+@tailwind components;
+
+@layer components {
+
+    .mycards-div {
+        @apply my-4;
+    }
+
+    .my-cards {
+        @apply font-extrabold text-base;
+    }
+}

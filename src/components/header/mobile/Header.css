@@ -1,0 +1,12 @@
+@tailwind components;
+
+@layer components {
+
+    .mobile-description-my-cards {
+        @apply flexrow justify-between m-[0.25rem_1.5rem_0.25rem_1.5rem] h-[1rem] items-center;
+    }
+
+    .mobile-my-cards {
+        @apply font-extrabold text-[14px] m-0;
+    }
+}

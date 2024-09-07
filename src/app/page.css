@@ -1,0 +1,10 @@
+@tailwind components;
+
+@layer components {
+
+    @media (max-width: 1400px) {
+        .mainContent {
+            @apply px-4;
+        }
+    }
+}

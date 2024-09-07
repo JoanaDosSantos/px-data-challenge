@@ -1,0 +1,27 @@
+@tailwind components;
+
+@layer components {
+    .main-section {
+        @apply flex justify-center w-full;
+    }
+
+    .main-footer {
+        @apply fixed bottom-4 rounded-[16rem] w-64 h-16 flex justify-evenly items-center shadow-[0_4px_4px_0_#00000040] bg-[var(--white)];
+    }
+
+    .menu-icons {
+        @apply w-10 h-10 border-none bg-[var(--white)] p-0 cursor-pointer;
+    }
+
+    .menu-icons:hover{
+        @apply border-none bg-[rgba(116,116,116,0.23)] text-purple-600 rounded-[50%] cursor-pointer;
+    }
+
+    .menu-icons-selected {
+        @apply w-12 h-12 border-none bg-[#7811CA20] text-purple-600 rounded-[50%] p-2 cursor-pointer;
+    }
+
+    .item-selected {
+        @apply w-8 h-8;
+    }
+}

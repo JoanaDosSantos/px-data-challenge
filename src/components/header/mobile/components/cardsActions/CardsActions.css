@@ -1,0 +1,42 @@
+@tailwind components;
+
+
+@layer components {
+
+    .mobile-cards-section {
+        @apply flexrow justify-between m-[2.5rem_1.5rem_0_1.5rem] h-[3.25rem] items-center;
+    }
+
+    .mobile-title-div {
+        @apply flexrow items-center;
+    }
+
+    .mobile-title {
+        @apply font-extrabold text-[14px] m-0;
+    }
+
+    .mobile-portals-icon {
+        @apply text-purple-600 h-5 ml-[2px] cursor-pointer;
+    }
+
+    .mobile-cards-div {
+        @apply w-[22rem] flex justify-end gap-3;
+    }
+
+    .mobile-savedcards-button {
+        @apply flexrow text-black w-[120px] h-9 rounded-3xl items-center border-black border-[1px] justify-center text-[12px] cursor-pointer p-0;
+    }
+
+    .mobile-savedcards-icon {
+        @apply text-purple-600 w-5 h-5;
+    }
+
+    .mobile-newcards-button {
+        @apply flexrow text-white bg-[var(--purple)] w-[120px] h-9 rounded-3xl items-center border-[1px] justify-center text-[12px] border-transparent cursor-pointer;
+    }
+
+    .mobile-newcards-icon {
+        @apply text-white w-5 h-5;
+    }
+
+}

@@ -1,0 +1,27 @@
+@tailwind components;
+
+@layer components {
+    .mobile-header-section {
+        @apply flexrow justify-between m-[1rem_1.5rem_0_1.5rem] h-12 items-center;
+    }
+
+    .mobile-menu-button {
+        @apply flex h-[36px] w-[48px] cursor-pointer items-center justify-evenly rounded-2xl border-[1px];
+    }
+
+    .mobile-menu-icon {
+        @apply w-7 h-7;
+    }
+
+    .mobile-logo-img {
+        @apply w-[6.5rem] h-12;
+    }
+
+    .mobile-user-button {
+        @apply flex h-[36px] w-[48px] cursor-pointer items-center justify-evenly rounded-2xl border-[1px];
+    }
+
+    .mobile-user-icon {
+        @apply w-8 h-8;
+    }
+}

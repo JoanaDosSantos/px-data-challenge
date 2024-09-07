@@ -1,0 +1,87 @@
+@tailwind components;
+
+@layer components {
+
+    .filters-section {
+        @apply flexrow justify-between;
+    }
+
+    .search-div {
+        @apply bg-[var(--light-gray)] h-[46px] w-[420px] flex items-center justify-between rounded-[8px] cursor-pointer;
+    }
+
+    .search-input {
+        @apply border-transparent w-[85%] h-[calc(100%-6px)] bg-[var(--light-gray)] rounded text-xs ml-4;
+    }
+
+    .search-input:focus {
+        @apply border-transparent outline-none;
+    }
+
+    .search-icon {
+        @apply w-[18px] h-[18px] font-light mr-4;
+    }
+
+    .filters-div {
+        @apply flex justify-end gap-2;
+    }
+
+    .active-view{
+        @apply bg-[var(--light-gray)] rounded;
+    }
+
+    .list-view {
+        @apply border-none w-9 h-9 cursor-pointer bg-transparent;
+    }
+
+    .block-view {
+        @apply border-none w-9 h-9 cursor-pointer bg-transparent;
+    }
+
+
+    /* Estilização do React select */
+    .custom-select {
+        @apply border border-gray-300 shadow-md rounded-md;
+    }
+
+    .custom-select-tag {
+        @apply w-20 h-8 rounded-md;
+    }
+    
+    .custom-select-period {
+        @apply w-40 h-8 rounded-md;
+    }
+    
+    .custom-select-lastmod {
+        @apply w-[10.25rem] h-8 rounded-md;
+    }
+    
+    .custom-select .react-select__control {
+        @apply border-none shadow-sm bg-[var(--light-gray)] cursor-pointer;
+    }
+    
+    .custom-select .react-select__placeholder {
+        @apply w-32 text-xs text-black;
+    }
+    
+    .custom-select .react-select__single-value {
+        @apply text-black text-xs font-medium text-[var(--purple)];
+    }
+    
+    .custom-select .react-select__dropdown-indicator {
+        @apply text-gray-500 cursor-pointer;
+    }
+    
+    .custom-select .react-select__indicator-separator {
+        @apply hidden;
+    }
+    
+    .custom-select .react-select__menu {
+        @apply mt-1 bg-[var(--light-gray)] shadow-md border border-white rounded-md gap-1;
+    }
+    
+    .custom-select .react-select__option {
+        @apply text-black text-xs hover:bg-gray-300 cursor-pointer;
+    }
+    
+}

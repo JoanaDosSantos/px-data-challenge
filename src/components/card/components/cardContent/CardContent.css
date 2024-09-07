@@ -1,0 +1,40 @@
+@tailwind components;
+
+@layer components {
+    .row {
+        animation-name: expandCard;
+        animation-duration: 250ms;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0ms;
+        height: 2rem;
+        overflow: hidden;
+
+        @apply flex items-center justify-between cursor-pointer h-8 overflow-hidden;
+    }
+
+    .row-details {
+        @apply flex items-center gap-2;
+    }
+
+    .row-details>span {
+        @apply font-semibold text-[12px];
+    }
+
+    .spreadline {
+        transform: translateX(-1rem);
+
+        @apply w-[calc(100%+2rem)] bg-[var(--light-gray)] h-1;
+    }
+}
+
+@keyframes expandCard {
+    0% {
+        opacity: 0;
+        height: 0;
+    }
+
+    100% {
+        opacity: 1;
+        height: 2rem;
+    }
+}

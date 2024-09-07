@@ -1,0 +1,18 @@
+@tailwind components;
+
+@layer components {
+
+    .card-container {
+        @apply flex flex-wrap justify-around gap-4 mt-6 flex-1;
+    }
+
+    .list-view-container{
+        @apply flex-col;
+    }
+
+    @media (max-width: 1400px) {
+        .card-container {
+            @apply w-full;
+        }
+    }
+}

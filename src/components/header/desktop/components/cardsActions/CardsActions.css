@@ -1,0 +1,41 @@
+@tailwind components;
+
+@layer components {
+
+    .cards-section {
+        @apply flexrow justify-between my-8 h-[3.25rem] items-center;
+    }
+
+    .title-div {
+        @apply flexrow items-center;
+    }
+
+    .title {
+        @apply font-extrabold text-xl m-0;
+    }
+
+    .portals-icon {
+        @apply text-purple-600 h-6 ml-4 cursor-pointer;
+    }
+
+    .cards-div {
+        @apply w-[22rem] flex justify-end gap-3;
+    }
+
+    .savedcards-button {
+        @apply flexrow text-black w-[11.25rem] h-12 py-1 px-2 rounded-3xl items-center border-black border-[1px] justify-center font-semibold text-base cursor-pointer;
+    }
+
+    .savedcards-icon {
+        @apply text-purple-600 w-5 h-5 mr-2;
+    }
+
+    .newcards-button {
+        @apply flexrow text-white bg-[var(--purple)] w-[11.25rem] h-12 py-1 px-2 rounded-3xl items-center border-[1px] justify-center text-base border-transparent font-semibold cursor-pointer;
+    }
+
+    .newcards-icon {
+        @apply text-white w-5 h-5 mr-2;
+    }
+
+}
