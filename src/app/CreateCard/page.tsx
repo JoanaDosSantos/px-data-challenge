@@ -111,7 +111,7 @@ export default function CreateCardPage() {
                     isContentExpanded
                         ?
                         Object.values(contentData).map((data, index) => (
-                            <div className='row'>
+                            <div className='row' key={index}>
                                 <div className='input-div'>
                                     <span className='label'>Titulo</span>
                                     <input type="text" placeholder='Insira um Titulo' onChange={(ev) => handleContentTitleChange(index, ev.target.value)} />

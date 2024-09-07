@@ -26,12 +26,13 @@ interface ICardContextData {
 const CardContextData = createContext<ICardContextData>({} as ICardContextData);
 
 export function CardContextProvider({ children }: CardProps) {
-    const [cards, setCards] = useState<Array<ICard>>(new CardService().getCards())
+    const [cards, setCards] = useState<Array<ICard>>([])
     const [favorites, setFavorites] = useState<Array<number>>([])
     const [isGridView, setIsGridView] = useState<boolean>(false)
 
     useEffect(() => {
         getFavoritesFromCache()
+        setCards(new CardService().getCards())
     }, [])
 
     function filterCards(searchText: string) {

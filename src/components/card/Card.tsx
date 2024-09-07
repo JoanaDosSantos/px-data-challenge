@@ -7,8 +7,6 @@ import { ChevronDownIcon, StarIcon as StarIconOutline } from "@heroicons/react/2
 import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid"
 import dotsIcon from "@/assets/threedots.svg"
 import fileIcon from "@/assets/file.svg"
-import chainIcon from "@/assets/anex.svg"
-import newIcon from "@/assets/newanex.svg"
 
 import './Card.css'
 import { CardContent } from "./components/cardContent/CardContent"
@@ -67,7 +65,7 @@ export function Card({ cardData, isFavorite }: IProps) {
                         <div className="contents">
                             {
                                 cardData.content.map((c, index) =>
-                                    <CardContent contentData={c} isLastItem={!((index + 1) != cardData.content.length)} />
+                                    <CardContent contentData={c} isLastItem={!((index + 1) != cardData.content.length)} key={index}/>
                                 )
                             }
                         </div>
